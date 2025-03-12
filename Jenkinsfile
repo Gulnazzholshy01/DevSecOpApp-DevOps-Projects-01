@@ -67,7 +67,7 @@ pipeline {
         }
         stage('Docker Image Scan') {
             steps {
-                sh 'trivy image --format table -o trivy-fs-report.html gulnaz1357/boardgame:latest'
+                sh 'trivy image --format table -o trivy-image-report.html gulnaz1357/boardgame:latest'
             }
         }
         stage('Push Docker Image') {
@@ -123,7 +123,7 @@ pipeline {
                     from: 'jenkins@example.com',
                     replyTo: 'jenkins@example.com',
                     mimeType: 'text/html',
-                    attachmentsPattern: 'trivy-report.html'
+                    attachmentsPattern: 'trivy-image-report.html'
                 )
             }
         }
